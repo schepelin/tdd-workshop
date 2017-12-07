@@ -16,6 +16,11 @@ class TestIsPerfect(unittest.TestCase):
         classifier = PerfectNumberClassifier(7)
         self.assertFalse(classifier.is_factor(3))
 
+    def test__get_factor_for_6(self):
+        expected = [1, 2, 3, 6]
+        classifier = PerfectNumberClassifier(6)
+        self.assertEqual(classifier.get_factors(), expected)
+
 
 if __name__ == '__main__':
     unittest.main()
