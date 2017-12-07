@@ -16,10 +16,18 @@ class TestIsPerfect(unittest.TestCase):
         classifier = PerfectNumberClassifier(7)
         self.assertFalse(classifier.is_factor(3))
 
-    def test__get_factor_for_6(self):
+    def test__add_factor(self):
+        classifier = PerfectNumberClassifier(6)
+        classifier.add_factor(2)
+        classifier.add_factor(3)
+        self.assertEqual(classifier.factors, [1, 2, 3, 6])
+
+    @unittest.skip('I have to write add_factor first')
+    def test__calculate_factors_for_6(self):
         expected = [1, 2, 3, 6]
         classifier = PerfectNumberClassifier(6)
-        self.assertEqual(classifier.get_factors(), expected)
+        classifier.calculate_factors()
+        self.assertEqual(classifier.factors, expected)
 
 
 if __name__ == '__main__':

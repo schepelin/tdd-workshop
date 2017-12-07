@@ -10,19 +10,23 @@ class PerfectNumberClassifier:
 
     def __init__(self, number):
         self._number = number
+        self.factors = [1, number]
 
     def is_factor(self, factor):
         return self._number % factor == 0
 
+    def add_factor(self, factor):
+        self.factors.append(factor)
+
     def get_factors(self):
-        factors = []
+        # code operates on different levels of abstraction
+        factors = []  # can be moved to internal state
         factors.append(1)
 
         i = 2
         while i < self._number:
             if self.is_factor(i):
-                factors.append(i)
+                self.add_factor(i)  # this behavior can be tested
             i += 1
 
-        factors.append(self._number)
         return factors
