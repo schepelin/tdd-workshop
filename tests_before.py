@@ -20,14 +20,17 @@ class TestIsPerfect(unittest.TestCase):
         classifier = PerfectNumberClassifier(6)
         classifier.add_factor(2)
         classifier.add_factor(3)
-        self.assertEqual(classifier.factors, [1, 2, 3, 6])
+        self.assertEqual(classifier.factors, {1, 2, 3, 6})
 
-    @unittest.skip('I have to write add_factor first')
     def test__calculate_factors_for_6(self):
-        expected = [1, 2, 3, 6]
+        expected = {1, 2, 3, 6}
         classifier = PerfectNumberClassifier(6)
         classifier.calculate_factors()
         self.assertEqual(classifier.factors, expected)
+
+    def test__is_prime(self):
+        classifier = PerfectNumberClassifier(6)
+        self.assertEqual(classifier.is_perfect(), True)
 
 
 if __name__ == '__main__':
